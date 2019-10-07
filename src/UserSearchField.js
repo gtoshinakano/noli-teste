@@ -8,8 +8,7 @@ class UserSearchField extends React.Component{
       <Input
         {...this.props}
         icon={{ name: 'search', link: true }}
-        placeholder='Buscar usuário GitHub...'
-
+        placeholder='Usuário GitHub'
       />
     )
   }
