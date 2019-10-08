@@ -42,6 +42,7 @@ class RepositoryDetails extends React.Component {
         <Header icon>
           <Icon name='github' color="red" />
           {this.state.errorMsg}
+          <Header.Subheader>Parece que o repositório que procurou não existe.</Header.Subheader>
         </Header>
       </Segment>
     )

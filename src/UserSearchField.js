@@ -16,7 +16,8 @@ class UserSearchField extends React.Component{
   }
 
   handleChange = (e) => {
-    this.setState({value: e.target.value})
+    let toSet = e.target.value.replace(/\s/g, '')
+    this.setState({value: toSet})
   }
 
   handleOpen = () => {

@@ -3,6 +3,7 @@ import {Segment, Header, Icon, Grid, Card, Image, List, Breadcrumb} from 'semant
 import { Link } from "react-router-dom"
 import axios from 'axios'
 import moment from 'moment'
+import UserSearchField from './UserSearchField'
 
 class UserInfo extends React.Component {
 
@@ -43,7 +44,7 @@ class UserInfo extends React.Component {
       })
     }).catch(error => this.setState({
       error: true,
-      errorMsg: "Usuário do GitHub não encontrado",
+      errorMsg: "Usuário do GitHub não encontrado.",
       loading: false
     }))
 
@@ -51,11 +52,13 @@ class UserInfo extends React.Component {
 
   renderError = () => {
     return (
-      <Segment placeholder>
+      <Segment placeholder textAlign="center">
         <Header icon>
           <Icon name='user x' color="red" />
           {this.state.errorMsg}
+          <Header.Subheader>Tente buscar usuário novamente</Header.Subheader>
         </Header>
+        <UserSearchField />
       </Segment>
     )
   }
@@ -81,17 +84,17 @@ class UserInfo extends React.Component {
         <Segment basic loading={this.state.loading}>
         <Grid>
           <Grid.Row>
-            <Grid.Column width="16">
+            <Grid.Column width={16}>
               <Breadcrumb size="big">
                 <Breadcrumb.Section link as={Link} to="/">Página Inicial</Breadcrumb.Section>
                 <Breadcrumb.Divider icon='right chevron' />
-                <Breadcrumb.Section link as={Link} to={"/user/" + userInfo.login}>{userInfo.login}</Breadcrumb.Section>
+                <Breadcrumb.Section active>{userInfo.login}</Breadcrumb.Section>
               </Breadcrumb>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
-            <Grid.Column width="4">
-              <Card>
+            <Grid.Column widescreen={4} largeScreen={4} mobile={16}>
+              <Card fluid>
                 <Image src={userInfo.avatar_url} wrapped ui={false} />
                 <Card.Content>
                   <Card.Header>{userInfo.name}</Card.Header>
@@ -101,7 +104,7 @@ class UserInfo extends React.Component {
                 </Card.Content>
               </Card>
             </Grid.Column>
-            <Grid.Column width="12">
+            <Grid.Column widescreen={12} largeScreen={12} mobile={16}>
               <List divided relaxed>
                 {this.renderRepoList()}
               </List>

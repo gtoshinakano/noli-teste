@@ -21,8 +21,8 @@ class NavBar extends React.Component {
           active={activeItem === 'inicial'}
           onClick={this.handleItemClick}
         >
-          <Icon name='github' />
-          GitHub
+          <Icon name='home' />
+          Página Inicial
         </Menu.Item>
         <Menu.Menu position='right'>
           <Menu.Item>
